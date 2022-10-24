@@ -9,14 +9,12 @@ function setCardType(type){
   const colors = {
     visa: ["#436D99", "#2D57F2"],
     mastercard: ["#DF6F29", "#C69347"],
-    defaut: ["black", "gray"]
+    default: ["black", "gray"],
   }
-
-  ccBgcolor1.setAttribute("fill", colors[type][0])
-  ccBgcolor2.setAttribute("fill", colors[type][1])
-  ccLogo.setAttribute("src", `cc-${type}.svg`)
+      ccBgcolor1.setAttribute("fill", colors[type][0])
+      ccBgcolor2.setAttribute("fill", colors[type][1])
+      ccLogo.setAttribute("src", `cc-${type}.svg`)
 }
-globalThis.setCardType = setCardType
 
 const securityCode = document.querySelector('#security-code')
 const securityCodePattern = {
@@ -52,7 +50,7 @@ const cardNumberPattern = {
     },
     {
       mask: "0000 0000 0000 0000",
-      regex: /(^5 [1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
+      regex: /(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
       cardType: "mastercard",
     },
     {
@@ -65,8 +63,6 @@ const cardNumberPattern = {
     const search = dynamicMasked.compiledMasks.find(function(item) {
       return number.match(item.regex)
     })
-    console.log(search)
-
     return search
   },
 }
